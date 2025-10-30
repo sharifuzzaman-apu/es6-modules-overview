@@ -6,12 +6,20 @@ import Watch from "./watch";
 function App() {
   const [watches, setWatches] = useState([]);
   useEffect(() => {
-    // fetch from the public folder (Vite serves files in `public/` at the root)
-    fetch('/watches.json')
+    // fetch from the data from github repository raw link
+    fetch(
+      "https://raw.githubusercontent.com/sharifuzzaman-apu/es6-modules-overview/refs/heads/main/public/watches.json"
+    )
       .then((res) => res.json())
-      .then((data) => setWatches(data))
-      // .catch((err) => console.error('Failed to load watches.json', err));
+      .then((data) => setWatches(data));
+    // .catch((err) => console.error('Failed to load watches.json', err));
   }, []);
+  // fetch from local public folder 
+  //   fetch('/watches.json')
+  //     .then((res) => res.json())
+  //     .then((data) => setWatches(data))
+  //     // .catch((err) => console.error('Failed to load watches.json', err));
+  // }, []);
   // const watches = [
   //   { id: "w001", name: "Aurelius Mariner Pro 300", price: 1295.0 },
   //   { id: "w002", name: "Orion Classic Field 38", price: 395.0 },
